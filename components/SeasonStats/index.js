@@ -29,7 +29,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-
 export default function SeasonStats({stats}) {
   if (stats.length > 0) {
     return(

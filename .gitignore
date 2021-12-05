@@ -62,3 +62,6 @@ amplifytools.xcconfig
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# vim swp
+**.swp
