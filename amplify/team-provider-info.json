@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-nhlplayerstats-dev-220822-authRole",
+      "UnauthRoleArn": "arn:aws:iam::069781498036:role/amplify-nhlplayerstats-dev-220822-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::069781498036:role/amplify-nhlplayerstats-dev-220822-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-nhlplayerstats-dev-220822-deployment",
+      "UnauthRoleName": "amplify-nhlplayerstats-dev-220822-unauthRole",
+      "StackName": "amplify-nhlplayerstats-dev-220822",
+      "StackId": "arn:aws:cloudformation:us-east-2:069781498036:stack/amplify-nhlplayerstats-dev-220822/578e9bb0-53e6-11ec-83d4-063adee473ba",
+      "AmplifyAppId": "d1ih1scedfvapc"
+    }
+  }
+}
