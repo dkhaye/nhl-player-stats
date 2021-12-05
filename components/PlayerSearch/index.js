@@ -5,7 +5,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import SeasonStats from 'components/SeasonStats';
 
-export default function PlayerSearch({onPlayerSelectHandle}) {
+export default function PlayerSearch() {
   const [open, setOpen] = React.useState(false);
   const [players, setPlayers] = React.useState([]);
   const [stats, setStats] = React.useState([]);
@@ -28,6 +28,31 @@ export default function PlayerSearch({onPlayerSelectHandle}) {
     }));
   };
 
+  const onPlayerSelectHandle = async id => {
+    const response = await fetch(
+      "https://statsapi.web.nhl.com/api/v1/people/" + id + "/stats?stats=yearByYear"
+    );
+    const rawStats = await response.json();
+
+    if (!rawStats || !rawStats["stats"]) {
+      return {}
+    }
+
+    const nhlSeasons = rawStats["stats"][0]["splits"].filter( seasonHash => {
+      return seasonHash["league"]["name"] == "National Hockey League"
+    });
+
+    setStats(nhlSeasons.map( seasonHash => {
+      return {
+        year: seasonHash.season.substr(0,4) + " - " + seasonHash.season.substr(4,4),
+        team: seasonHash.team.name,
+        games: seasonHash.stat.games,
+        goals: seasonHash.stat.goals,
+        assists: seasonHash.stat.assists,
+        toi: seasonHash.stat.timeOnIce,
+      }
+    }));
+  };
 
   React.useEffect(() => {
     if (!open) {
