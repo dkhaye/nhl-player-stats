@@ -12,51 +12,57 @@ export default function PlayerSearch() {
   const loading = open && players.length === 0;
 
   const onSearchChangeHandle = async value => {
-    const response = await fetch(
-      "https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/" + value + "/10"
-    );
+    if(value) {
+      const response = await fetch(
+        "https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/" + value + "/10"
+      );
 
-    const players = await response.json();
+      const players = await response.json();
 
-    setPlayers(players["suggestions"].map( str => {
-      let els = str.split("|");
-      let playerObj = {
-        name: els[2] + " " + els[1],
-        id: els[0]
-      };
-      return playerObj;
-    }));
+      setPlayers(players["suggestions"].map( str => {
+        let els = str.split("|");
+        let playerObj = {
+          name: els[2] + " " + els[1],
+          id: els[0]
+        };
+        return playerObj;
+      }));
+    } else {
+      setPlayers([]);
+    }
   };
 
-  const onPlayerSelectHandle = async id => {
-    const response = await fetch(
-      "https://statsapi.web.nhl.com/api/v1/people/" + id + "/stats?stats=yearByYear"
-    );
-    const rawStats = await response.json();
+  const onPlayerSelectHandle = async value => {
+    if (value && value.id) {
+      const response = await fetch(
+        "https://statsapi.web.nhl.com/api/v1/people/" + value.id + "/stats?stats=yearByYear"
+      );
+      const rawStats = await response.json();
 
-    if (!rawStats || !rawStats["stats"]) {
-      return {}
-    }
-
-    const nhlSeasons = rawStats["stats"][0]["splits"].filter( seasonHash => {
-      return seasonHash["league"]["name"] == "National Hockey League"
-    });
-
-    setStats(nhlSeasons.map( seasonHash => {
-      return {
-        year: seasonHash.season.substr(0,4) + " - " + seasonHash.season.substr(4,4),
-        team: seasonHash.team.name,
-        games: seasonHash.stat.games,
-        goals: seasonHash.stat.goals,
-        assists: seasonHash.stat.assists,
-        toi: seasonHash.stat.timeOnIce,
+      if (!rawStats || !rawStats["stats"]) {
+        return {}
       }
-    }));
+
+      const nhlSeasons = rawStats["stats"][0]["splits"].filter( seasonHash => {
+        return seasonHash["league"]["name"] == "National Hockey League"
+      });
+
+      setStats(nhlSeasons.map( seasonHash => {
+        return {
+          year: seasonHash.season.substr(0,4) + " - " + seasonHash.season.substr(4,4),
+          team: seasonHash.team.name,
+          ...seasonHash.stat
+        }
+      }));
+    } else {
+      setStats([]);
+    }
   };
 
   React.useEffect(() => {
     if (!open) {
       setPlayers([]);
+      setStats([]);
     }
   }, [open]);
 
@@ -77,9 +83,7 @@ export default function PlayerSearch() {
         options={players}
         loading={loading}
         onChange={(ev, value) => {
-          if (ev.target.value !== "") {
-            onPlayerSelectHandle(value.id);
-          }
+          onPlayerSelectHandle(value);
         }}
         renderInput={params => (
           <TextField
