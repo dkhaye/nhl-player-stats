@@ -31,39 +31,99 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 export default function SeasonStats({stats}) {
   if (stats.length > 0) {
-    return(
-      <div>
-        <br/>
-        <TableContainer component={Paper}>
-          <Table aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>Season</StyledTableCell>
-                <StyledTableCell align="right">Team</StyledTableCell>
-                <StyledTableCell align="right">GP</StyledTableCell>
-                <StyledTableCell align="right">G</StyledTableCell>
-                <StyledTableCell align="right">A</StyledTableCell>
-                <StyledTableCell align="right">TOI</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {stats.map((row) => (
-                <StyledTableRow key={row.name}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.year}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.team}</StyledTableCell>
-                  <StyledTableCell align="right">{row.games}</StyledTableCell>
-                  <StyledTableCell align="right">{row.goals}</StyledTableCell>
-                  <StyledTableCell align="right">{row.assists}</StyledTableCell>
-                  <StyledTableCell align="right">{row.toi}</StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    );
+    //Check if any year has "wins", treat as skater if not
+    if (stats.findIndex((year) => {return (year.wins != null)}) == -1) {
+      return(
+        <div>
+          <br/>
+          <TableContainer component={Paper}>
+            <Table aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Season</StyledTableCell>
+                  <StyledTableCell align="right">Team</StyledTableCell>
+                  <StyledTableCell align="right">GP</StyledTableCell>
+                  <StyledTableCell align="right">G</StyledTableCell>
+                  <StyledTableCell align="right">A</StyledTableCell>
+                  <StyledTableCell align="right">PIM</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {stats.map((row) => (
+                  <StyledTableRow key={row.year + row.team}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.year}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{row.team}</StyledTableCell>
+                    <StyledTableCell align="right">{row.games}</StyledTableCell>
+                    <StyledTableCell align="right">{row.goals}</StyledTableCell>
+                    <StyledTableCell align="right">{row.assists}</StyledTableCell>
+                    <StyledTableCell align="right">{row.pim}</StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      );
+    } else {
+      //Player has "wins" and is a Goalie
+      return(
+        <div>
+          <br/>
+          <TableContainer component={Paper}>
+            <Table aria-label="customized table">
+              <TableHead>
+                <TableRow>
+                  <StyledTableCell>Season</StyledTableCell>
+                  <StyledTableCell align="right">Team</StyledTableCell>
+                  <StyledTableCell align="right">GP</StyledTableCell>
+                  <StyledTableCell align="right">W</StyledTableCell>
+                  <StyledTableCell align="right">L</StyledTableCell>
+                  <StyledTableCell align="right">T/OT</StyledTableCell>
+                  <StyledTableCell align="right">MIN</StyledTableCell>
+                  <StyledTableCell align="right">GA</StyledTableCell>
+                  <StyledTableCell align="right">SO</StyledTableCell>
+                  <StyledTableCell align="right">GAA</StyledTableCell>
+                  <StyledTableCell align="right">SV%</StyledTableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {stats.map((row) => (
+                  <StyledTableRow key={row.year + row.team}>
+                    <StyledTableCell component="th" scope="row">
+                      {row.year}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">{row.team}</StyledTableCell>
+                    <StyledTableCell align="right">{row.games}</StyledTableCell>
+                    <StyledTableCell align="right">{row.wins}</StyledTableCell>
+                    <StyledTableCell align="right">{row.losses}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.ties ? row.ties : (row.ot ? row.ot : "-")}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.timeOnIce.split(":")[0]}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.goalsAgainst ? row.goalsAgainst : "-"}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.shotsAgainst ? row.goalsAgainst : "-"}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.goalAgainstAverage ? row.goalAgainstAverage.toFixed(2) : "-"}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.savePercentage ? (row.savePercentage * 100).toFixed(2)+"%" : "-"}
+                    </StyledTableCell>
+                  </StyledTableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      );
+    }
   } else {
     return(
       <div />
