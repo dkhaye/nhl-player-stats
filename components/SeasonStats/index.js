@@ -50,7 +50,7 @@ export default function SeasonStats({stats}) {
               </TableHead>
               <TableBody>
                 {stats.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.year + row.team}>
                     <StyledTableCell component="th" scope="row">
                       {row.year}
                     </StyledTableCell>
@@ -90,7 +90,7 @@ export default function SeasonStats({stats}) {
               </TableHead>
               <TableBody>
                 {stats.map((row) => (
-                  <StyledTableRow key={row.name}>
+                  <StyledTableRow key={row.year + row.team}>
                     <StyledTableCell component="th" scope="row">
                       {row.year}
                     </StyledTableCell>
