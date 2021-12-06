@@ -4555,13 +4555,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-dom@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "jest-dom@npm:4.0.0"
-  checksum: d65b87a1973c0cec83179d60b755784a5215ff221fdb508486545ed739ba26c1d5bf51f00d73ca4791482a30d96e962396b170f0a4fa7176074159ec2317c946
-  languageName: node
-  linkType: hard
-
 "jest-each@npm:^27.4.2":
   version: 27.4.2
   resolution: "jest-each@npm:27.4.2"
@@ -5620,7 +5613,6 @@ __metadata:
     eslint: 7
     eslint-config-next: 12.0.4
     jest: ^27.4.3
-    jest-dom: ^4.0.0
     jest-fetch-mock: ^3.0.3
     next: 12.0.4
     react: 17.0.2
