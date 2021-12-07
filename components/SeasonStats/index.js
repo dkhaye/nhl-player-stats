@@ -1,3 +1,9 @@
+//
+// components/SeasonStats/index.js
+//
+// Generate Player Statistics table given a stats array
+//
+
 import React from "react";
 
 import Paper from '@mui/material/Paper';
@@ -29,6 +35,12 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
+//
+//  Function: SeasonStats
+//  Description: renders the Table of the Player Statistics
+//  Input:  stats - array of stat hashes containing year/team data
+//  Output: Table of either Skater stats or Goalie stats (depending on existence of "wins") 
+//
 export default function SeasonStats({stats}) {
   if (stats.length > 0) {
     //Check if any year has "wins", treat as skater if not
