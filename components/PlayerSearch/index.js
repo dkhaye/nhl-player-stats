@@ -1,3 +1,9 @@
+//
+// components/PlayerSearch/index.js
+//
+// Autocomplete component for the Player Search textbox
+//
+
 import fetch from "cross-fetch";
 import React from "react";
 import TextField from "@mui/material/TextField";
@@ -5,6 +11,15 @@ import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
 import SeasonStats from '@/components/SeasonStats';
 
+//
+//  Function: PlayerSearch
+//  Description: renders the Autocomplete textbox for searching for players
+//  Input:  players - array of players to show in combobox
+//          onPlayerSelectHandle - function to call when the user selects a player
+//          onSearchChangeHandle - function to call when the user types/updates the textbox
+//  Output: Autocomplete box including a textbox to type player name, 
+//          combobox to select possible options, and a loading circle
+//
 export default function PlayerSearch({players, onPlayerSelectHandle, onSearchChangeHandle}) {
   const [open, setOpen] = React.useState(false);
   const loading = open && players.length === 0;
