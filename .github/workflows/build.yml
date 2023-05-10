@@ -1,0 +1,42 @@
+on:
+  workflow_dispatch:
+  push:
+
+name: Build Website
+
+jobs:
+  build-website:
+    name: Build Website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Build Cache
+        uses: actions/cache@v3
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-next-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-next-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-next-
+
+      - name: Node Modules Cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Yarn Install
+        run: yarn install --immutable
+
+      - name: Build Website
+        run: yarn build
