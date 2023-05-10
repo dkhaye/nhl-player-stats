@@ -1,0 +1,42 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "automergeType": "branch",
+  "branchConcurrentLimit": 6,
+  "commitMessagePrefix": "[renovatebot] {{#if isMajor}}[MAJOR]{{/if}}",
+  "extends": ["config:base"],
+  "includeForks": true,
+  "internalChecksFilter": "strict",
+  "labels": ["dependencies"],
+  "major": {
+    "addLabels": ["MAJOR"],
+    "prPriority": 1
+  },
+  "packageRules": [
+    {
+      "matchPackageNames": ["caniuse-lite"],
+      "automerge": true,
+      "prPriority": 3
+    },
+    {
+      "automerge": true,
+      "extends": "packages:eslint",
+      "groupName": "ESLint packages",
+      "prPriority": 2
+    },
+    {
+      "automerge": true,
+      "matchDepTypes": ["devDependencies"],
+      "matchPackagePatterns": ["yarn", "prettier"],
+      "prPriority": 2
+    }
+  ],
+  "postUpdateOptions": ["yarnDedupeHighest"],
+  "prBodyNotes": [
+    "{{#if isMajor}}:warning: This is a [MAJOR] upgrade! DO NOT merge without manual testing! :warning:{{/if}}"
+  ],
+  "prConcurrentLimit": 4,
+  "rangeStrategy": "pin",
+  "reviewers": ["dkhaye"],
+  "separateMultipleMajor": true,
+  "stabilityDays": 30
+}
