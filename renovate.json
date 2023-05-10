@@ -28,7 +28,7 @@
       "matchDepTypes": ["devDependencies"],
       "matchPackagePatterns": ["yarn", "prettier"],
       "prPriority": 2
-    },
+    }
   ],
   "postUpdateOptions": ["yarnDedupeHighest"],
   "prBodyNotes": [
