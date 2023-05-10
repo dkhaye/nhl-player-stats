@@ -1,11 +1,17 @@
 on:
   workflow_dispatch:
   push:
+    branches:
+      - main
+      - renovate/*
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 name: Test Website
 
 jobs:
   test-website:
+    if: ${{ startsWith(github.head_ref, 'renovate/') == false || github.event_name == 'push' }}
     name: Test Website
     runs-on: ubuntu-latest
 
