@@ -27,7 +27,7 @@ describe("PlayerSearch", () => {
     expect(input).toBeInTheDocument();
   });
 
-  it("renders a list of players", () => {
+  it("calls onSearchChangeHandle when you type a player name", () => {
     const params = getParams();
     const { onSearchChangeHandle } = params;
 
