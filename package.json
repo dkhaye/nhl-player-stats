@@ -22,7 +22,7 @@
     "@testing-library/jest-dom": "^5.16.0",
     "@testing-library/react": "^12.1.2",
     "eslint": "7.32.0",
-    "eslint-config-next": "12.3.4",
+    "eslint-config-next": "13.3.0",
     "jest": "^27.4.3",
     "jest-fetch-mock": "^3.0.3",
     "react-test-renderer": "^18.2.0"
