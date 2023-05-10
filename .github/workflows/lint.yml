@@ -1,0 +1,42 @@
+on:
+  workflow_dispatch:
+  push:
+
+name: Lint
+
+jobs:
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Lint Cache
+        uses: actions/cache@v3
+        with:
+          path: dist/cache/eslint
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
+          restore-keys: |
+            ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-
+            ${{ runner.os }}-eslint-
+
+      - name: Node Modules Cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Yarn Install
+        run: yarn install --immutable
+
+      - name: Lint
+        run: yarn lint:errors
