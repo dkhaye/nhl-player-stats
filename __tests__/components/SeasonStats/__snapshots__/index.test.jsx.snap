@@ -1,5 +1,84 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SeasonStats When stats with wins but missing stats renders goalie table 1`] = `
+<table
+  aria-label="customized table"
+  class="MuiTable-root css-rqglhn-MuiTable-root"
+>
+  <thead
+    class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+  >
+    <tr
+      class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
+    >
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1wvnaxz-MuiTableCell-root"
+        scope="col"
+      >
+        Season
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        Team
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        GP
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        G
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        A
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        PIM
+      </th>
+    </tr>
+  </thead>
+  <tbody
+    class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+  >
+    <tr
+      class="MuiTableRow-root css-1enotpu-MuiTableRow-root"
+    >
+      <th
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-132a6sb-MuiTableCell-root"
+        scope="row"
+      />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      />
+    </tr>
+  </tbody>
+</table>
+`;
+
 exports[`SeasonStats When stats with wins renders goalie table 1`] = `
 <table
   aria-label="customized table"

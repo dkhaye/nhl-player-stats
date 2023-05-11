@@ -28,6 +28,44 @@ describe('SeasonStats', () => {
     })
   });
 
+  describe('When stats with wins but missing stats', () => {
+    const getParams = () => ({
+      "stats": [{
+        "year": null,
+        "team": null,
+        "timeOnIce" : null,
+        "ot" : null,
+        "shutouts" : null,
+        "wins" : null,
+        "losses" : null,
+        "saves" : null,
+        "powerPlaySaves" : null,
+        "shortHandedSaves" : null,
+        "evenSaves" : null,
+        "shortHandedShots" : null,
+        "evenShots" : null,
+        "powerPlayShots" : null,
+        "savePercentage" : null,
+        "goalAgainstAverage" : null,
+        "games" : null,
+        "gamesStarted" : null,
+        "shotsAgainst" : null,
+        "goalsAgainst" : null,
+        "powerPlaySavePercentage" : null,
+        "evenStrengthSavePercentage" : null
+      }]
+    })
+
+    it('renders goalie table', () => {
+      render(<SeasonStats {...getParams()} />)
+
+      const table = screen.getByRole("table");
+
+      expect(table).toMatchSnapshot();
+    })
+  });
+
+
   describe('When stats with wins', () => {
     const getParams = () => ({
       "stats": [{
