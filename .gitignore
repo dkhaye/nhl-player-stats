@@ -55,8 +55,8 @@ amplifytools.xcconfig
 #amplify-do-not-edit-end
 
 # yarn v2
+.pnp.*
 .yarn/*
-!.yarn/cache
 !.yarn/patches
 !.yarn/plugins
 !.yarn/releases
