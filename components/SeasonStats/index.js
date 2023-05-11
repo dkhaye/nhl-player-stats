@@ -44,10 +44,14 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function SeasonStats({stats}) {
   if (stats.length > 0) {
     //Check if any year has "wins", treat as skater if not
-    if (stats.findIndex((year) => {return (year.wins != null)}) == -1) {
-      return(
+    if (
+      stats.findIndex((year) => {
+        return year.wins != null;
+      }) == -1
+    ) {
+      return (
         <div>
-          <br/>
+          <br />
           <TableContainer component={Paper}>
             <Table aria-label="customized table">
               <TableHead>
@@ -69,7 +73,9 @@ export default function SeasonStats({stats}) {
                     <StyledTableCell align="right">{row.team}</StyledTableCell>
                     <StyledTableCell align="right">{row.games}</StyledTableCell>
                     <StyledTableCell align="right">{row.goals}</StyledTableCell>
-                    <StyledTableCell align="right">{row.assists}</StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.assists}
+                    </StyledTableCell>
                     <StyledTableCell align="right">{row.pim}</StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -80,9 +86,9 @@ export default function SeasonStats({stats}) {
       );
     } else {
       //Player has "wins" and is a Goalie
-      return(
+      return (
         <div>
-          <br/>
+          <br />
           <TableContainer component={Paper}>
             <Table aria-label="customized table">
               <TableHead>
@@ -109,24 +115,26 @@ export default function SeasonStats({stats}) {
                     <StyledTableCell align="right">{row.team}</StyledTableCell>
                     <StyledTableCell align="right">{row.games}</StyledTableCell>
                     <StyledTableCell align="right">{row.wins}</StyledTableCell>
-                    <StyledTableCell align="right">{row.losses}</StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.ties ? row.ties : (row.ot ? row.ot : "-")}
+                      {row.losses}
+                    </StyledTableCell>
+                    <StyledTableCell align="right">
+                      {row.ties || row.ot || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {row.timeOnIce.split(":")[0]}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.goalsAgainst ? row.goalsAgainst : "-"}
+                      {row.goalsAgainst || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.shotsAgainst ? row.goalsAgainst : "-"}
+                      {row.shotsAgainst || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.goalAgainstAverage ? row.goalAgainstAverage.toFixed(2) : "-"}
+                      {row?.goalAgainstAverage.toFixed(2) || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.savePercentage ? (row.savePercentage * 100).toFixed(2)+"%" : "-"}
+                      {(row?.savePercentage * 100).toFixed(2) + "%" || "-"}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
@@ -137,8 +145,6 @@ export default function SeasonStats({stats}) {
       );
     }
   } else {
-    return(
-      <div />
-    );
+    return <div />;
   }
 }
