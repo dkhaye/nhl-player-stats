@@ -490,7 +490,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/react@npm:^11.11.0":
+"@emotion/react@npm:11.11.0":
   version: 11.11.0
   resolution: "@emotion/react@npm:11.11.0"
   dependencies:
@@ -531,7 +531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@emotion/styled@npm:^11.6.0":
+"@emotion/styled@npm:11.6.0":
   version: 11.6.0
   resolution: "@emotion/styled@npm:11.6.0"
   dependencies:
@@ -900,7 +900,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/material@npm:^5.2.2":
+"@mui/material@npm:5.2.3":
   version: 5.2.3
   resolution: "@mui/material@npm:5.2.3"
   dependencies:
@@ -1227,7 +1227,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/jest-dom@npm:^5.16.0":
+"@testing-library/jest-dom@npm:5.16.1":
   version: 5.16.1
   resolution: "@testing-library/jest-dom@npm:5.16.1"
   dependencies:
@@ -1244,7 +1244,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@testing-library/react@npm:^12.1.2":
+"@testing-library/react@npm:12.1.2":
   version: 12.1.2
   resolution: "@testing-library/react@npm:12.1.2"
   dependencies:
@@ -4252,7 +4252,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest-fetch-mock@npm:^3.0.3":
+"jest-fetch-mock@npm:3.0.3":
   version: 3.0.3
   resolution: "jest-fetch-mock@npm:3.0.3"
   dependencies:
@@ -4576,7 +4576,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jest@npm:^27.4.3":
+"jest@npm:27.4.3":
   version: 27.4.3
   resolution: "jest@npm:27.4.3"
   dependencies:
@@ -5152,20 +5152,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nhl-player-stats@workspace:."
   dependencies:
-    "@emotion/react": ^11.11.0
-    "@emotion/styled": ^11.6.0
-    "@mui/material": ^5.2.2
-    "@testing-library/jest-dom": ^5.16.0
-    "@testing-library/react": ^12.1.2
+    "@emotion/react": 11.11.0
+    "@emotion/styled": 11.6.0
+    "@mui/material": 5.2.3
+    "@testing-library/jest-dom": 5.16.1
+    "@testing-library/react": 12.1.2
     cross-fetch: ^3.1.4
     eslint: 8.38.0
     eslint-config-next: 13.3.0
-    jest: ^27.4.3
-    jest-fetch-mock: ^3.0.3
+    jest: 27.4.3
+    jest-fetch-mock: 3.0.3
     next: 12.1.0
     react: 17.0.2
     react-dom: 17.0.2
-    react-test-renderer: ^18.2.0
+    react-test-renderer: 18.2.0
   languageName: unknown
   linkType: soft
 
@@ -5728,7 +5728,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:^18.2.0":
+"react-test-renderer@npm:18.2.0":
   version: 18.2.0
   resolution: "react-test-renderer@npm:18.2.0"
   dependencies:
