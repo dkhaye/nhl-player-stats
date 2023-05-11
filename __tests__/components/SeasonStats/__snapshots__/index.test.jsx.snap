@@ -129,7 +129,7 @@ exports[`SeasonStats When stats with wins renders goalie table 1`] = `
       <td
         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
       >
-        5
+        41
       </td>
       <td
         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
