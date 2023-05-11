@@ -36,7 +36,7 @@ describe('SeasonStats', () => {
         "timeOnIce" : null,
         "ot" : null,
         "shutouts" : null,
-        "wins" : null,
+        "wins" : 1,
         "losses" : null,
         "saves" : null,
         "powerPlaySaves" : null,

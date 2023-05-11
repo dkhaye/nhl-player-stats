@@ -33,19 +33,49 @@ exports[`SeasonStats When stats with wins but missing stats renders goalie table
         class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
         scope="col"
       >
-        G
+        W
       </th>
       <th
         class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
         scope="col"
       >
-        A
+        L
       </th>
       <th
         class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
         scope="col"
       >
-        PIM
+        T/OT
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        MIN
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        GA
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        SO
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        GAA
+      </th>
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-alignRight MuiTableCell-sizeMedium css-1nslmh4-MuiTableCell-root"
+        scope="col"
+      >
+        SV%
       </th>
     </tr>
   </thead>
@@ -67,13 +97,40 @@ exports[`SeasonStats When stats with wins but missing stats renders goalie table
       />
       <td
         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
-      />
+      >
+        1
+      </td>
       <td
         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
       />
       <td
         class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      >
+        -
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
       />
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      >
+        -
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      >
+        -
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      >
+        -
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-1bhpkcd-MuiTableCell-root"
+      >
+        -
+      </td>
     </tr>
   </tbody>
 </table>
