@@ -122,7 +122,7 @@ export default function SeasonStats({stats}) {
                       {row.ties || row.ot || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.timeOnIce.split(":")[0]}
+                      {row.timeOnIce?.split(":")[0]}
                     </StyledTableCell>
                     <StyledTableCell align="right">
                       {row.goalsAgainst || "-"}
@@ -131,10 +131,10 @@ export default function SeasonStats({stats}) {
                       {row.shotsAgainst || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row?.goalAgainstAverage.toFixed(2) || "-"}
+                      {row.goalAgainstAverage?.toFixed(2) || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {(row?.savePercentage * 100).toFixed(2) + "%" || "-"}
+                      {row.savePercentage ? (row?.savePercentage * 100).toFixed(2) + "%" : "-"}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
