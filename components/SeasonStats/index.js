@@ -134,7 +134,7 @@ export default function SeasonStats({stats}) {
                       {row.goalAgainstAverage?.toFixed(2) || "-"}
                     </StyledTableCell>
                     <StyledTableCell align="right">
-                      {row.savePercentage ? (row?.savePercentage * 100).toFixed(2) + "%" : "-"}
+                      {row.savePercentage ? (row.savePercentage * 100).toFixed(2) + "%" : "-"}
                     </StyledTableCell>
                   </StyledTableRow>
                 ))}
