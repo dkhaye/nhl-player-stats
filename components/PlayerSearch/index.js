@@ -4,12 +4,10 @@
 // Autocomplete component for the Player Search textbox
 //
 
-import fetch from "cross-fetch";
 import React from "react";
 import TextField from "@mui/material/TextField";
 import Autocomplete from "@mui/material/Autocomplete";
 import CircularProgress from "@mui/material/CircularProgress";
-import SeasonStats from '@/components/SeasonStats';
 
 //
 //  Function: PlayerSearch
@@ -22,13 +20,13 @@ import SeasonStats from '@/components/SeasonStats';
 //
 export default function PlayerSearch({players, onPlayerSelectHandle, onSearchChangeHandle}) {
   const [open, setOpen] = React.useState(false);
-  const loading = open && players.length === 0;
+  const loading = open && players.current.length === 0;
 
   React.useEffect(() => {
     if (!open) {
-      players = [];
+      players.current = [];
     }
-  }, [open]);
+  }, [open, players]);
 
   return (
     <Autocomplete
