@@ -19,7 +19,7 @@ import SeasonStats from '@/components/SeasonStats';
 //  Output: PlayerSearch and SeasonStats components
 //
 export default function Home() {
-  const [players, setPlayers] = React.useState([]);
+  const players = React.useRef([]);
   const [stats, setStats] = React.useState([]);
 
   //
@@ -27,7 +27,7 @@ export default function Home() {
   //  Description: fetches 10 players that match the provide search value
   //  Input: value = search string
   //  Output: none
-  //  Effect: updates players state object using setPlayers to matching players
+  //  Effect: updates players state object using players.current to matching players
   //
   //  API: https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/<search_str>/<res_count>
   //    Input:  search_str - player name string to search
@@ -41,18 +41,18 @@ export default function Home() {
         "https://suggest.svc.nhl.com/svc/suggest/v1/minplayers/" + value + "/10"
       );
 
-      const players = await response.json();
+      const apiPlayers = await response.json();
 
-      setPlayers(players["suggestions"].map( str => {
+      players.current = apiPlayers["suggestions"].map( str => {
         let els = str.split("|");
         let playerObj = {
           name: els[2] + " " + els[1],
           id: els[0]
         };
         return playerObj;
-      }));
+      });
     } else {
-      setPlayers([]);
+      players.current = [];
     }
   };
 
