@@ -7,14 +7,14 @@ name: Build Website
 jobs:
   build-website:
     name: Build Website
-    runs-on: ubuntu-latest
+    runs-on: buildjet-4vcpu-ubuntu-2204
 
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build Cache
-        uses: actions/cache@v3
+        uses: buildjet/cache@v3
         with:
           path: .next/cache
           key: ${{ runner.os }}-next-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
@@ -23,14 +23,14 @@ jobs:
             ${{ runner.os }}-next-
 
       - name: Node Modules Cache
-        uses: actions/cache@v3
+        uses: buildjet/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node-
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: buildjet/setup-node@v3
         with:
           node-version: 18
           cache: 'yarn'
