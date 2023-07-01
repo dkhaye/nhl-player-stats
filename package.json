@@ -27,5 +27,5 @@
     "jest-fetch-mock": "3.0.3",
     "react-test-renderer": "18.2.0"
   },
-  "packageManager": "yarn@3.6.0"
+  "packageManager": "yarn@3.6.1"
 }
