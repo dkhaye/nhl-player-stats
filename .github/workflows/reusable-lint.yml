@@ -30,7 +30,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Lint
-        run: yarn lint -f ./sonar/scripts/sonar_formatter.js -o eslint-report.json' 
+        run: yarn lint -f ./sonar/scripts/sonar_formatter.js -o eslint-report.json 
 
       - name: Upload Lint Report
         uses: actions/upload-artifact@v3
