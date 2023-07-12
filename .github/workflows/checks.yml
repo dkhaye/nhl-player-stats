@@ -1,0 +1,93 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main 
+      - renovate/*
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+name: CI Checks
+
+jobs:
+  flow-checks:
+    name: Flow Checks
+    runs-on: ubuntu-latest
+    outputs:
+      run_on_push: ${{ contains(fromJSON('["develop", "master"]'), github.ref_name) || (startsWith(github.ref_name, 'renovate/') && (steps.pr.outputs.number == '' || steps.pr.outputs.state != 'OPEN')) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Get Pull Request Info
+        id: pr
+        run: |
+          echo "number=$(gh pr view --json number -q .number || echo "")" >> $GITHUB_OUTPUT
+          echo "state=$(gh pr view --json state -q .state || echo "")" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  install-dependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Node Modules Cache
+        id: node-cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: ${{ runner.os }}-node-
+      
+      - name: Setup Node
+        id: setup-node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: 'yarn'
+      
+      - name: Yarn Install
+        if: steps.node-cache.outputs.cache-hit != 'true' || steps.setup-node.outputs.cache-hit != 'true'
+        run: yarn install --immutable
+
+  test:
+    name: Test
+    needs: [flow-checks, install-dependencies]
+    if: ${{ github.event_name == 'pull_request' || needs.flow-checks.outputs.run_on_push == 'true' }}
+    uses: ./.github/workflows/reusable-test.yml
+
+  lint:
+    name: Lint
+    needs: [flow-checks, install-dependencies]
+    if: ${{ github.event_name == 'pull_request' || needs.flow-checks.outputs.run_on_push == 'true' }}
+    uses: ./.github/workflows/reusable-lint.yml
+  
+  sonar-scan:
+    needs: [flow-checks, test, lint]
+    if: ${{ needs.test.result == 'success' && needs.lint.result == 'success' }}
+    name: SonarCloud Scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+      
+      - name: Download Coverage
+        uses: actions/download-artifact@v3
+        with:
+          name: coverage-artifacts
+          path: coverage
+
+      - name: Download ESLint Report
+        uses: actions/download-artifact@v3
+        with:
+          name: eslint-report
+        
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
