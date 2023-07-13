@@ -1,20 +1,15 @@
-on:
-  workflow_dispatch:
-  push:
-    branches:
-      - main
-      - renovate/*
-  pull_request:
-    types: [opened, synchronize, reopened]
+name: zz - Reusable Test
 
-name: Test Website
+on:
+  workflow_call:
 
 jobs:
-  test-website:
-    if: ${{ startsWith(github.head_ref, 'renovate/') == false || github.event_name == 'push' }}
-    name: Test Website
+  test:
+    name: Run Tests
+    # The type of runner that the job will run on any runner with node will work
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -27,31 +22,33 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-jest-${{ hashFiles('**/yarn.lock') }}-
             ${{ runner.os }}-jest-
-
+      
       - name: Node Modules Cache
+        id: node-cache
         uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node-
-
+      
       - name: Setup Node
+        id: setup-node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           cache: 'yarn'
-
+      
       - name: Yarn Install
+        if: steps.node-cache.outputs.cache-hit != 'true' || steps.setup-node.outputs.cache-hit != 'true'
         run: yarn install --immutable
 
-      - name: Test Website
-        run: yarn test --coverage
+      - name: Run tests
+        run: yarn test:ci 
 
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets. SONARCLOUD_TOKEN }}
+      - name: Remove unused coverage files
+        run: rm -rf coverage/clover.xml coverage/coverage-final.json coverage/lcov-report
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: coverage-artifacts
+          path: coverage/

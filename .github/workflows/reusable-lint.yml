@@ -1,42 +1,39 @@
-on:
-  workflow_dispatch:
-  push:
+name: zz - Reusable Lint
 
-name: Lint
+on:
+  workflow_call:
 
 jobs:
-  lint:
-    name: Lint
+  eslint:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Lint Cache
-        uses: actions/cache@v3
-        with:
-          path: dist/cache/eslint
-          key: ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-${{ hashFiles('**/*.[jt]s', '**/*.[jt]sx') }}
-          restore-keys: |
-            ${{ runner.os }}-eslint-${{ hashFiles('**/yarn.lock') }}-
-            ${{ runner.os }}-eslint-
-
+      
       - name: Node Modules Cache
+        id: node-cache
         uses: actions/cache@v3
         with:
           path: node_modules
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: ${{ runner.os }}-node-
-
+      
       - name: Setup Node
+        id: setup-node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version-file: .nvmrc
           cache: 'yarn'
 
       - name: Yarn Install
+        if: steps.node-cache.outputs.cache-hit != 'true' || steps.setup-node.outputs.cache-hit != 'true'
         run: yarn install --immutable
 
       - name: Lint
-        run: yarn lint:errors
+        run: yarn lint -f ./.sonar/scripts/sonar_formatter.js -o eslint-report.json 
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: eslint-report
+          path: eslint-report.json
