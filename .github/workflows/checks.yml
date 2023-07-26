@@ -28,6 +28,8 @@ jobs:
 
   install-dependencies:
     name: Install Dependencies
+    needs: [flow-checks]
+    if: ${{ github.event_name == 'pull_request' || needs.flow-checks.outputs.run_on_push == 'true' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
