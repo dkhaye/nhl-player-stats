@@ -19,7 +19,7 @@
     },
     {
       "automerge": true,
-      "extends": "group:yarnMonorepo",
+      "extends": "monorepo:yarn",
       "prPriority": 2
     },
     {
