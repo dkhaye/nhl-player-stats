@@ -19,7 +19,7 @@
     },
     {
       "automerge": true,
-      "extends": "monorepo:yarn",
+      "extends": "group:yarnMonorepo",
       "prPriority": 2
     },
     {
@@ -35,6 +35,10 @@
       "prPriority": 2
     }
   ],
+  "pin": {
+    "automerge": true,
+    "prPriority": 2
+  },
   "postUpdateOptions": ["yarnDedupeHighest"],
   "prBodyNotes": [
     "{{#if isMajor}}:warning: This is a [MAJOR] upgrade! DO NOT merge without manual testing! :warning:{{/if}}"
