@@ -19,19 +19,17 @@
     },
     {
       "automerge": true,
+      "extends": "packages:jsUnitTest",
+      "prPriority": 2
+    },
+    {
+      "automerge": true,
       "extends": "monorepo:yarn",
       "prPriority": 2
     },
     {
       "automerge": true,
-      "extends": "packages:eslint",
-      "groupName": "ESLint packages",
-      "prPriority": 2
-    },
-    {
-      "automerge": true,
-      "matchDepTypes": ["devDependencies"],
-      "matchPackagePatterns": ["prettier"],
+      "extends": "packages:linters",
       "prPriority": 2
     }
   ],
