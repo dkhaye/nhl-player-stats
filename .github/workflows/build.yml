@@ -4,6 +4,10 @@ on:
 
 name: Build Website
 
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: true
+
 jobs:
   build-website:
     name: Build Website

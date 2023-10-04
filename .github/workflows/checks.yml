@@ -9,6 +9,10 @@ on:
 
 name: CI Checks
 
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: true
+
 jobs:
   flow-checks:
     name: Flow Checks
