@@ -17,7 +17,7 @@ jobs:
       run_on_push: ${{ contains(fromJSON('["develop", "master"]'), github.ref_name) || (startsWith(github.ref_name, 'renovate/') && (steps.pr.outputs.number == '' || steps.pr.outputs.state != 'OPEN')) }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Get Pull Request Info
         id: pr
         run: |
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Node Modules Cache
         id: node-cache
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0 
       
