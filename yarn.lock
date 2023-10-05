@@ -988,15 +988,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/base@npm:5.0.0-beta.13":
-  version: 5.0.0-beta.13
-  resolution: "@mui/base@npm:5.0.0-beta.13"
+"@mui/base@npm:5.0.0-beta.14":
+  version: 5.0.0-beta.14
+  resolution: "@mui/base@npm:5.0.0-beta.14"
   dependencies:
     "@babel/runtime": ^7.22.10
     "@emotion/is-prop-valid": ^1.2.1
     "@floating-ui/react-dom": ^2.0.1
     "@mui/types": ^7.2.4
-    "@mui/utils": ^5.14.7
+    "@mui/utils": ^5.14.8
     "@popperjs/core": ^2.11.8
     clsx: ^2.0.0
     prop-types: ^15.8.1
@@ -1008,27 +1008,27 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 3e42e64e14d37ccee7a2623c7759e118f22482ca04044b50be2cd02f5bd365a5ca588ca8e7361345e42ad8c9fcf03b79d61602a08f78ee2a1a6cc447fb1ed49d
+  checksum: 3e5c980edb285d4fbf1f9f6c08b237a502e6c444222e0165e98e4e25787de7663d6905536b8e8a7a0888571daaa75fcad01534c8f8ea8ba30451cad82d1b85cc
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^5.14.7":
+"@mui/core-downloads-tracker@npm:^5.14.8":
   version: 5.14.12
   resolution: "@mui/core-downloads-tracker@npm:5.14.12"
   checksum: 1c1576ceecf7cade9e0d7a531632f5f9db24853d9ebbd47bb9ed943a3af7de734ad4f3374bab79880e9591db3ea55ea84cc10df72177f9ca5e32cc7662e04405
   languageName: node
   linkType: hard
 
-"@mui/material@npm:5.14.7":
-  version: 5.14.7
-  resolution: "@mui/material@npm:5.14.7"
+"@mui/material@npm:5.14.8":
+  version: 5.14.8
+  resolution: "@mui/material@npm:5.14.8"
   dependencies:
     "@babel/runtime": ^7.22.10
-    "@mui/base": 5.0.0-beta.13
-    "@mui/core-downloads-tracker": ^5.14.7
-    "@mui/system": ^5.14.7
+    "@mui/base": 5.0.0-beta.14
+    "@mui/core-downloads-tracker": ^5.14.8
+    "@mui/system": ^5.14.8
     "@mui/types": ^7.2.4
-    "@mui/utils": ^5.14.7
+    "@mui/utils": ^5.14.8
     "@types/react-transition-group": ^4.4.6
     clsx: ^2.0.0
     csstype: ^3.1.2
@@ -1048,7 +1048,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: c5d72fe9f1160389ab0be94873946f24e1a3db944247c1b34ba8e936b21babf42c11e0e6319d266506858d37b7e70f6fd1bb54015973b8ecb1dd09889f4b9255
+  checksum: 2db4eceb6a2b51e2f429082206b5c4194f894bc6831cf5348d301b910e5e2b1a62565cad00a244100434899307c20134832ab2e85dd56bef4dd210d87496e136
   languageName: node
   linkType: hard
 
@@ -1090,7 +1090,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.14.7":
+"@mui/system@npm:^5.14.8":
   version: 5.14.12
   resolution: "@mui/system@npm:5.14.12"
   dependencies:
@@ -1130,7 +1130,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^5.14.12, @mui/utils@npm:^5.14.7":
+"@mui/utils@npm:^5.14.12, @mui/utils@npm:^5.14.8":
   version: 5.14.12
   resolution: "@mui/utils@npm:5.14.12"
   dependencies:
@@ -5311,7 +5311,7 @@ __metadata:
   dependencies:
     "@emotion/react": 11.11.1
     "@emotion/styled": 11.11.0
-    "@mui/material": 5.14.7
+    "@mui/material": 5.14.8
     "@testing-library/jest-dom": 6.1.2
     "@testing-library/react": 14.0.0
     eslint: 8.48.0
