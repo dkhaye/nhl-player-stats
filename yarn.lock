@@ -375,7 +375,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.23.7, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
+"@babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.23.8, @babel/runtime@npm:^7.23.9, @babel/runtime@npm:^7.5.5, @babel/runtime@npm:^7.8.7, @babel/runtime@npm:^7.9.2":
   version: 7.23.9
   resolution: "@babel/runtime@npm:7.23.9"
   dependencies:
@@ -638,7 +638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@floating-ui/react-dom@npm:^2.0.5":
+"@floating-ui/react-dom@npm:^2.0.6":
   version: 2.0.8
   resolution: "@floating-ui/react-dom@npm:2.0.8"
   dependencies:
@@ -988,14 +988,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/base@npm:5.0.0-beta.31":
-  version: 5.0.0-beta.31
-  resolution: "@mui/base@npm:5.0.0-beta.31"
+"@mui/base@npm:5.0.0-beta.33":
+  version: 5.0.0-beta.33
+  resolution: "@mui/base@npm:5.0.0-beta.33"
   dependencies:
-    "@babel/runtime": "npm:^7.23.7"
-    "@floating-ui/react-dom": "npm:^2.0.5"
+    "@babel/runtime": "npm:^7.23.8"
+    "@floating-ui/react-dom": "npm:^2.0.6"
     "@mui/types": "npm:^7.2.13"
-    "@mui/utils": "npm:^5.15.4"
+    "@mui/utils": "npm:^5.15.6"
     "@popperjs/core": "npm:^2.11.8"
     clsx: "npm:^2.1.0"
     prop-types: "npm:^15.8.1"
@@ -1006,27 +1006,27 @@ __metadata:
   peerDependenciesMeta:
     "@types/react":
       optional: true
-  checksum: 0fddfad690e6ed9e022e269e29632f975f69c04179f564627a266fbd23457832704a819a36314438083322da4e52827fd6b1b248b058b7d18b4c8322cb60fedb
+  checksum: 8898430f4c8f6d9ce2aa46f621e7a84e800ee2a08fd6ce121e999494c77256060376d11e4d05640e8848eca1d8d553e95c2a150ce68d6416a1517136e8253ef8
   languageName: node
   linkType: hard
 
-"@mui/core-downloads-tracker@npm:^5.15.4":
-  version: 5.15.9
-  resolution: "@mui/core-downloads-tracker@npm:5.15.9"
-  checksum: f0f7af8e8f6f50df29a4e41ecb59c75869f760f22df0dc534476094089c74edcd7eacb4d17e636e0b7dd06ea1f3bb6564b21dbe072f89d1b9d87373760d69e2b
+"@mui/core-downloads-tracker@npm:^5.15.6":
+  version: 5.15.10
+  resolution: "@mui/core-downloads-tracker@npm:5.15.10"
+  checksum: aeb16b31f60c08cc03585fedadceadd54aa48dda394fb945ab885f884c1b1692efb72309465641b6ca2367bd53d5fdce15f189d4691f42b59206622ffb2d6f0f
   languageName: node
   linkType: hard
 
-"@mui/material@npm:5.15.4":
-  version: 5.15.4
-  resolution: "@mui/material@npm:5.15.4"
+"@mui/material@npm:5.15.6":
+  version: 5.15.6
+  resolution: "@mui/material@npm:5.15.6"
   dependencies:
-    "@babel/runtime": "npm:^7.23.7"
-    "@mui/base": "npm:5.0.0-beta.31"
-    "@mui/core-downloads-tracker": "npm:^5.15.4"
-    "@mui/system": "npm:^5.15.4"
+    "@babel/runtime": "npm:^7.23.8"
+    "@mui/base": "npm:5.0.0-beta.33"
+    "@mui/core-downloads-tracker": "npm:^5.15.6"
+    "@mui/system": "npm:^5.15.6"
     "@mui/types": "npm:^7.2.13"
-    "@mui/utils": "npm:^5.15.4"
+    "@mui/utils": "npm:^5.15.6"
     "@types/react-transition-group": "npm:^4.4.10"
     clsx: "npm:^2.1.0"
     csstype: "npm:^3.1.2"
@@ -1046,7 +1046,7 @@ __metadata:
       optional: true
     "@types/react":
       optional: true
-  checksum: e089f3994d4dcfd19976994f251369b2e978f3405503d23a7ac2b8617cedb8b5dd7a7bb6ea523402b5c7a9467f0b604bf11f2a515bf460498dc1b1afff58b490
+  checksum: c6aff7dc5b65c68b4a6e1d0b4cc9712b906f0d3d57dcda49d7d4dee15e53872dec292e71bbdb38800849dccb0565aa259635e00332e85c1a8ba372322c8eeab8
   languageName: node
   linkType: hard
 
@@ -1088,7 +1088,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.15.4":
+"@mui/system@npm:^5.15.6":
   version: 5.15.9
   resolution: "@mui/system@npm:5.15.9"
   dependencies:
@@ -1128,7 +1128,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/utils@npm:^5.15.4, @mui/utils@npm:^5.15.9":
+"@mui/utils@npm:^5.15.6, @mui/utils@npm:^5.15.9":
   version: 5.15.9
   resolution: "@mui/utils@npm:5.15.9"
   dependencies:
@@ -5328,7 +5328,7 @@ __metadata:
   dependencies:
     "@emotion/react": "npm:11.11.3"
     "@emotion/styled": "npm:11.11.0"
-    "@mui/material": "npm:5.15.4"
+    "@mui/material": "npm:5.15.6"
     "@testing-library/jest-dom": "npm:6.2.1"
     "@testing-library/react": "npm:14.1.2"
     eslint: "npm:8.56.0"
