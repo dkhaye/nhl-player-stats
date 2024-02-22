@@ -39,7 +39,7 @@ jobs:
       - name: Remove unused coverage files
         run: rm -rf coverage/clover.xml coverage/coverage-final.json coverage/lcov-report
       
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: coverage-artifacts
           path: coverage/
