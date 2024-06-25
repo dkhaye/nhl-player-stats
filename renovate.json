@@ -8,8 +8,7 @@
   "internalChecksFilter": "strict",
   "labels": ["dependencies"],
   "major": {
-    "addLabels": ["MAJOR"],
-    "prPriority": 1
+    "addLabels": ["MAJOR"]
   },
   "packageRules": [
     {
@@ -34,8 +33,7 @@
     }
   ],
   "pin": {
-    "automerge": true,
-    "prPriority": 2
+    "automerge": true
   },
   "postUpdateOptions": ["yarnDedupeHighest"],
   "prBodyNotes": [
