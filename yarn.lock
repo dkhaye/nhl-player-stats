@@ -5275,7 +5275,7 @@ __metadata:
     jest-environment-jsdom: "npm:29.7.0"
     jest-fetch-mock: "npm:3.0.3"
     next: "npm:14.2.4"
-    react: "npm:18.3.1"
+    react: "npm:19.2.4"
     react-dom: "npm:18.3.1"
     react-test-renderer: "npm:18.3.1"
   languageName: unknown
@@ -5839,12 +5839,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:18.3.1":
-  version: 18.3.1
-  resolution: "react@npm:18.3.1"
-  dependencies:
-    loose-envify: "npm:^1.1.0"
-  checksum: 10/261137d3f3993eaa2368a83110466fc0e558bc2c7f7ae7ca52d94f03aac945f45146bd85e5f481044db1758a1dbb57879e2fcdd33924e2dde1bdc550ce73f7bf
+"react@npm:19.2.4":
+  version: 19.2.4
+  resolution: "react@npm:19.2.4"
+  checksum: 10/18179fe217f67eb2d0bc61cd04e7ad3c282ea09a1dface7eacd71816f62609f4bbf566c447c704335284deb8397b00bca084e0cd60e6f437279a7498e2d0bfe0
   languageName: node
   linkType: hard
 
