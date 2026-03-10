@@ -33,7 +33,7 @@ jobs:
         run: yarn lint -f ./.sonar/scripts/sonar_formatter.js -o eslint-report.json 
 
       - name: Upload Lint Report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: eslint-report
           path: eslint-report.json
