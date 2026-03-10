@@ -1,0 +1,123 @@
+name: Dependabot Automerge
+
+on:
+  pull_request_target:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  automerge:
+    name: Automerge Safe Dependabot Updates
+    if: ${{ github.actor == 'dependabot[bot]' && github.event.pull_request.draft == false }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetch Dependabot Metadata
+        id: metadata
+        uses: dependabot/fetch-metadata@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Classify Update
+        id: classify
+        uses: actions/github-script@v7
+        env:
+          DEPENDENCY_NAMES: ${{ steps.metadata.outputs.dependency-names }}
+          UPDATE_TYPE: ${{ steps.metadata.outputs.update-type }}
+        with:
+          script: |
+            const safeDependencies = new Set([
+              '@testing-library/jest-dom',
+              '@testing-library/react',
+              'eslint',
+              'eslint-config-next',
+              'jest',
+              'jest-environment-jsdom',
+              'jest-fetch-mock',
+              'react-test-renderer'
+            ]);
+
+            const parseDependencyNames = (raw) => {
+              if (!raw) return [];
+
+              try {
+                const parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) {
+                  return parsed;
+                }
+              } catch {}
+
+              return raw
+                .split(',')
+                .map((name) => name.trim())
+                .filter(Boolean);
+            };
+
+            const dependencyNames = parseDependencyNames(process.env.DEPENDENCY_NAMES);
+            const updateType = process.env.UPDATE_TYPE || '';
+            const unsupportedDependencies = dependencyNames.filter((name) => !safeDependencies.has(name));
+            const isSafeUpdateType = [
+              'version-update:semver-minor',
+              'version-update:semver-patch'
+            ].includes(updateType);
+
+            const shouldAutomerge =
+              dependencyNames.length > 0 &&
+              unsupportedDependencies.length === 0 &&
+              isSafeUpdateType;
+
+            core.info(`dependencyNames=${dependencyNames.join(', ') || '(none)'}`);
+            core.info(`updateType=${updateType || '(none)'}`);
+            core.info(`unsupportedDependencies=${unsupportedDependencies.join(', ') || '(none)'}`);
+
+            core.setOutput('should_automerge', String(shouldAutomerge));
+            core.setOutput(
+              'reason',
+              shouldAutomerge
+                ? 'Safe dependency update'
+                : `Blocked: updateType=${updateType || 'unknown'}, unsupported=${unsupportedDependencies.join(',') || 'none'}`
+            );
+
+      - name: Approve Pull Request
+        if: ${{ steps.classify.outputs.should_automerge == 'true' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.pulls.createReview({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              event: 'APPROVE',
+              body: 'Auto-approving a safe Dependabot dependency update.'
+            });
+
+      - name: Enable Auto-Merge
+        if: ${{ steps.classify.outputs.should_automerge == 'true' }}
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const pullRequestId = context.payload.pull_request.node_id;
+
+            await github.graphql(
+              `mutation EnableAutoMerge($pullRequestId: ID!) {
+                enablePullRequestAutoMerge(input: {
+                  pullRequestId: $pullRequestId,
+                  mergeMethod: SQUASH
+                }) {
+                  clientMutationId
+                }
+              }`,
+              { pullRequestId }
+            );
+
+      - name: Log Decision
+        run: echo "${{ steps.classify.outputs.reason }}"
