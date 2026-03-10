@@ -65,3 +65,10 @@ amplifytools.xcconfig
 
 # vim swp
 **.swp
+
+# Gas Town (added by gt)
+.runtime/
+.claude/
+.logs/
+__pycache__/
+.beads/
