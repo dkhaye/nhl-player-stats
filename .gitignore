@@ -68,6 +68,7 @@ amplifytools.xcconfig
 
 # Gas Town (added by gt)
 .runtime/
+.beads/
 .claude/
 .logs/
 __pycache__/
