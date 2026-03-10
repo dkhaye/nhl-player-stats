@@ -112,13 +112,13 @@ export default function Home() {
   */
   //    
   const onPlayerSelectHandle = async value => {
-    if (value && value.id) {
+    if (value?.id) {
       const response = await fetch(
         "https://statsapi.web.nhl.com/api/v1/people/" + value.id + "/stats?stats=yearByYear"
       );
       const rawStats = await response.json();
 
-      if (!rawStats || !rawStats["stats"]) {
+      if (!rawStats?.stats) {
         return {}
       }
 
