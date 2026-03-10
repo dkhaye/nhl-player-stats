@@ -71,3 +71,4 @@ amplifytools.xcconfig
 .claude/
 .logs/
 __pycache__/
+.beads/
