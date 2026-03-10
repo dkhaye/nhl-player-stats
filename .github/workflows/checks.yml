@@ -18,7 +18,7 @@ jobs:
     name: Flow Checks
     runs-on: ubuntu-latest
     outputs:
-      run_on_push: ${{ contains(fromJSON('["develop", "master"]'), github.ref_name) || (startsWith(github.ref_name, 'dependabot/') && (steps.pr.outputs.number == '' || steps.pr.outputs.state != 'OPEN')) }}
+      run_on_push: ${{ github.ref_name == 'main' || (startsWith(github.ref_name, 'dependabot/') && (steps.pr.outputs.number == '' || steps.pr.outputs.state != 'OPEN')) }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
