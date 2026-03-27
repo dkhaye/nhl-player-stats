@@ -82,13 +82,13 @@ jobs:
           fetch-depth: 0 
       
       - name: Download Coverage
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: coverage-artifacts
           path: coverage
 
       - name: Download ESLint Report
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: eslint-report
         
